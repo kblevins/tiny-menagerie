@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belly Button Biodiversity</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body style = "background-image: url({{ url_for('static', filename = 'pink dust.png') }}); text-align: center; color: white; font-family: 'Josefin Sans', sans-serif;">
+
+    <h1 style = "padding-top: 10%;">Belly Button Biodiversity Dashboard</h1>
+        <p style = "padding-bottom: 10%;">Use the interactive charts below to explore the dataset</p>
+
+
+    <div class = "container-fluid">
+
+        <div class="row" style="padding-bottom: 5%;">
+
+            <div class="col-sm-2">
+                <div style="border: 2px; background-color: grey; padding-top: 5%; padding-bottom: 5%; border-radius: 3px;">
+                <label for="selDataset">SELECT Sample</label>
+                <select id="selDataset" onchange="optionChanged(this.value)" style="color: black; border-radius: 3px;">
+                        <option value="BB_940">BB_940</option>
+                        <option value="BB_941">BB_941</option>
+                        <option value="BB_942">BB_942</option>
+                </select>
+                </div>
+                <div style="background-color: white; border-radius: 3px";>
+                    <h3 style="padding-top: 5%; padding-bottom: 5%; background-color: purple; border-top-left-radius: 3px; border-top-right-radius: 3px;">Sample Metadata</h3>
+                    <table style="color: black; text-align: left; margin: 0 auto;">
+                        <tr>
+                            <td>AGE</td>
+                            <td style="padding-left: 5%;">24</td>
+                        </tr>
+                        <tr>
+                            <td>BBTYPE</td>
+                            <td style="padding-left: 5%;">I</td>
+                        </tr>
+                        <tr>
+                            <td>GENDER</td>
+                            <td style="padding-left: 5%;">F</td>
+                        </tr>
+                        <tr>
+                            <td>LOCATION</td>
+                            <td style="padding-left: 5%;">Beaufort/NC</td>
+                        </tr>
+                        <tr>
+                            <td>SAMPLEID</td>
+                            <td style="padding-left: 5%;">940</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+            <div id = "pie"></div>
+                <script src="pie.js"></script>
+            </div>
+
+            <div class="col-sm-6">
+                <div id="washes"></div>
+                <script src="gauge.js"></script>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+               <div id = "bubble"></div>
+               <script src="BB_940_otu_df.js"></script>
+               <script src="bubble.js"></script>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

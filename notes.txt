@@ -1,0 +1,25 @@
+products
+flask app
+index html template populated by flask app
+js
+use sqlite db file & sqlalchemy
+json output
+
+
+flask routes
+/			populates index.html
+/names			return list of sample names
+/otu			returns list of otu descriptions
+/metadata/<sample>	returns metadata for given sample
+/Wfreq/<sample>		weekly washing frequency as a number
+/samples/<sample>	otu ids & sample values for a given sample
+
+
+
+flask-compatible css ref
+<link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+
+
+relavent activities
+C:\Users\Kali\data_bootcamp_repos\UTAAU201710DATA1-Class-Repository-DATA\1-Class-Content\11-Advanced-Data-Storage-and-Retrieval\3\Activities\Solved\10-Ins_Flask_with_ORM
+C:\Users\Kali\data_bootcamp_repos\UTAAU201710DATA1-Class-Repository-DATA\1-Class-Content\11-Advanced-Data-Storage-and-Retrieval\3\Activities\Solved\ExtraContent\Stu_Plotting
