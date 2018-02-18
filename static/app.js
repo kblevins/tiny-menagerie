@@ -40,6 +40,7 @@ function buildMeta(sample) {
 
 buildMeta("BB_940")
 
+// build pie chart
 function pieChart(sample){
     url = '/samples/'+sample;
     Plotly.d3.json(url, function(error, data){
@@ -71,4 +72,35 @@ function pieChart(sample){
 
 pieChart("BB_940")
 
+// build bubble chart
+function bubbleChart(sample){
+    url = '/samples/'+sample;
+    Plotly.d3.json(url, function(error, data){
+        if (error) return console.warn(error);
+        var otus = data.map(record => record.otu_id);
+        var values = data.map(record => record.sample_value);
+        var names = data.map(record => record.lowest_taxonomic_unit_found);
 
+        var trace1 = {
+            x: otus,
+            y: values,
+            text: names,
+            mode: 'markers',
+            marker: {
+            size: values,
+            color: otus
+            }
+        };
+        
+        var data = [trace1];
+        
+        var layout = {
+            showlegend: false
+        };
+        var BUBBLE = document.getElementById('bubble');
+        
+        Plotly.plot(BUBBLE, data, layout);        
+    }
+    )}
+    
+    bubbleChart("BB_940")
