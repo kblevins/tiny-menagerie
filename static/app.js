@@ -46,16 +46,12 @@ function pieChart(sample){
     Plotly.d3.json(url, function(error, data){
         if (error) return console.warn(error);
     
-        samples=[]
-        otus=[]
-        for (i = 0; i < 10; i++) {
-            samples.push(+data[i].sample_value)
-            otus.push(+data[i].otu_id)
-        }
+        var otus = data.map(record => record.otu_id);
+        var values = data.map(record => record.sample_value);
 
         var trace1 = {
-            labels: samples,
-            values: otus,
+            labels: otus.slice(0,10),
+            values: values.slice(0,10),
             type: 'pie'
         }
         
@@ -175,14 +171,5 @@ function guageChart(sample){
         Plotly.plot(GUAGE, data, layout);
     }
 )}
-/*
-function guageChart(sample){
-    url = '/wfreq/'+sample;
-    Plotly.d3.json(url, function(error, data){
-        if (error) return console.warn(error);
-        var level = +data.washes*180/9;
-        console.log(level);
-    }
-)}
-*/
+
 guageChart("BB_940")
