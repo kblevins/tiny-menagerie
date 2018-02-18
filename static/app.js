@@ -1,4 +1,17 @@
-/* Dropdown with list of all sample names */
+// on load, run with sample BB_940
+buildDropdown();
+buildMeta("BB_940");
+pieChart("BB_940");
+bubbleChart("BB_940");
+guageChart("BB_940")
+
+// update when new sample is selected
+function optionChanged(sample){
+    buildMeta(sample);
+    pieChart(sample);
+    bubbleChart(sample);
+    guageChart(sample);
+}
 
 // Populating dropdown with sample names
 function buildDropdown() {
@@ -14,8 +27,6 @@ function buildDropdown() {
                 }
     }
 )}
-
-buildDropdown();
 
 // Populating metadata
 function buildMeta(sample) {
@@ -37,8 +48,6 @@ function buildMeta(sample) {
         
     }
     )}
-
-buildMeta("BB_940");
 
 // build pie chart
 function pieChart(sample){
@@ -65,8 +74,6 @@ function pieChart(sample){
         Plotly.plot(PIE, pieData, layout);
         }
 )}
-
-pieChart("BB_940");
 
 // build bubble chart
 function bubbleChart(sample){
@@ -98,11 +105,6 @@ function bubbleChart(sample){
         Plotly.plot(BUBBLE, data, layout);        
     }
 )}
-    
-bubbleChart("BB_940");
-
-
-
 
 // build guage
 function guageChart(sample){
@@ -172,4 +174,3 @@ function guageChart(sample){
     }
 )}
 
-guageChart("BB_940")
