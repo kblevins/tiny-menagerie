@@ -41,7 +41,7 @@ def sample_list():
     for c in columns:
         sample_ids.append(c['name'])
     sample_ids = sample_ids[1:]
-    return jsonify({"sample list":sample_ids})
+    return jsonify(sample_ids)
 
 # route that returns a list of the otu descriptions
 @app.route('/otu')
@@ -54,7 +54,8 @@ def otu_list():
 def return_metadata(sample):
     sample = sample.replace("BB_", "")
     sample = int(sample)
-    met = session.query(Meta.AGE, Meta.BBTYPE, Meta.ETHNICITY, Meta.GENDER,                             Meta.LOCATION, Meta.SAMPLEID).filter(Meta.SAMPLEID == sample).all()
+    met = session.query(Meta.AGE, Meta.BBTYPE, Meta.ETHNICITY, Meta.GENDER,                             
+    Meta.LOCATION, Meta.SAMPLEID).filter(Meta.SAMPLEID == sample).all()
     cols = ('AGE', 'BBTYPE', 'ETHNICITY', 'GENDER', 'LOCATION', 'SAMPLEID')
     samp_dict = {}
     for i in range(0,len(met[0])):
@@ -92,3 +93,6 @@ def otu_df(sample):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
